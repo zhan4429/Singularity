@@ -1,0 +1,220 @@
+Bootstrap: localimage
+From: /apps/biocontainers/images/r4.2.3_rstudio2023.sif
+
+%post
+apt-get update 
+apt-get -y install libgdal-dev python-is-python3 libpng-dev libjpeg-dev
+
+## clean up
+apt-get -y autoremove
+apt-get clean
+rm -rf /var/lib/apt/lists/*
+
+####################################################################
+##################Basic R packages##################################
+
+
+Rscript -e "install.packages('openxlsx', dependencies = TRUE)"
+Rscript -e "install.packages('remotes')"
+Rscript -e "install.packages('rmdformats')"
+Rscript -e "install.packages('vioplot')"
+Rscript -e "devtools::install_github('vqv/ggbiplot')"
+Rscript -e "devtools::install_github('karthik/wesanderson')"
+Rscript -e "install.packages('clustree')"
+Rscript -e "install.packages('ggraph')"
+Rscript -e "install.packages('xlsx')"
+Rscript -e "install.packages('ggthemes')"
+
+
+####################################################################
+##################scRNAseq R packages##################################
+
+## edgeR
+Rscript -e 'BiocManager::install("edgeR")'
+
+## DESeq2
+Rscript -e 'BiocManager::install("DESeq2")'
+
+
+## monocle3
+Rscript -e "BiocManager::install(c('BiocGenerics', 'DelayedArray', 'DelayedMatrixStats',\
+                       'limma', 'lme4', 'S4Vectors', 'SingleCellExperiment',\
+                       'SummarizedExperiment', 'batchelor', 'HDF5Array',\
+                       'terra', 'ggrastr'))"
+Rscript -e "devtools::install_github('cole-trapnell-lab/monocle3')"
+
+## garnett
+Rscript -e "devtools::install_github('cole-trapnell-lab/garnett')"
+
+## Seurat3
+Rscript -e "install.packages('Seurat')"
+
+## Cellchat
+Rscript -e 'install.packages("NMF")'
+Rscript -e "devtools::install_github('jokergoo/circlize')"
+Rscript -e "devtools::install_github('jokergoo/ComplexHeatmap')"
+Rscript -e "devtools::install_github('sqjin/CellChat')"
+pip install umap-learn
+
+## Install ProjecTILs
+Rscript -e "remotes::install_github('carmonalab/scGate')"
+Rscript -e "remotes::install_github('carmonalab/ProjecTILs')"
+
+## scDblFinder
+Rscript -e 'BiocManager::install("scDblFinder")'
+
+## DropletUtils
+Rscript -e 'BiocManager::install("DropletUtils")'
+
+## SingleR
+Rscript -e 'BiocManager::install("SingleR")'
+
+## celldex
+Rscript -e 'BiocManager::install("celldex")'
+
+## dittoSeq
+Rscript -e 'BiocManager::install("dittoSeq")'
+
+## scCATCH
+Rscript -e 'BiocManager::install("scCATCH")'
+
+## SeuratWrappers
+Rscript -e "remotes::install_github('satijalab/seurat-wrappers')"
+
+## CoGAPS
+Rscript -e 'BiocManager::install("CoGAPS")'
+
+## tricycle
+Rscript -e 'BiocManager::install("tricycle")'
+
+##  miQC
+Rscript -e 'BiocManager::install("miQC")'
+
+## Nebulosa
+Rscript -e 'BiocManager::install("Nebulosa")'
+
+## schex
+Rscript -e 'BiocManager::install("schex")'
+
+## rliger
+Rscript -e "install.packages('rliger')"
+
+## scMappR
+Rscript -e 'BiocManager::install("pcaMethods")'
+Rscript -e 'BiocManager::install("preprocessCore")'
+Rscript -e 'BiocManager::install("GSVA")'
+Rscript -e 'install.packages("ADAPTS")'
+Rscript -e "install.packages('scMappR')"
+
+## signac
+Rscript -e "install.packages('Signac')"
+
+## scHot
+Rscript -e 'BiocManager::install("scHOT")'
+
+## M3Drop
+Rscript -e 'BiocManager::install("M3Drop")'
+
+## sceasy
+Rscript -e "devtools::install_github('cellgeni/sceasy')"
+
+## scKirby
+Rscript -e "devtools::install_github('bschilder/scKirby')"
+
+## zellkonverter
+Rscript -e 'BiocManager::install("zellkonverter")'
+
+## scCustomize
+Rscript -e "devtools::install_github('samuel-marsh/scCustomize')"
+
+## iCellR
+Rscript -e "install.packages('iCellR')"
+
+## doSNOW
+Rscript -e "install.packages('doSNOW')"
+
+## SnapATAC
+Rscript -e "devtools::install_github('r3fang/SnapATAC')"
+
+## Harmony
+script -e "install.packages('harmony')"
+
+## PCAtools
+Rscript -e 'BiocManager::install("PCAtools")'
+
+## SoupX
+Rscript -e "install.packages('SoupX')"
+
+## scde
+Rscript -e 'BiocManager::install("scde")'
+
+## sincell
+Rscript -e 'BiocManager::install("sincell")'
+
+## scMCA
+Rscript -e "devtools::install_github('ggjlab/scMCA')"
+
+## pcaMethods and GSVA
+Rscript -e 'BiocManager::install("pcaMethods")'
+Rscript -e 'BiocManager::install("GSVA")'
+
+## scMappR
+Rscript -e "install.packages('scMappR')"
+
+## splatter
+Rscript -e 'BiocManager::install("splatter")'
+
+## velocyto
+Rscript -e "devtools::install_github('velocyto-team/velocyto.R')"
+
+## muscat
+Rscript -e 'BiocManager::install("muscat")'
+
+## BayesSpace
+Rscript -e 'BiocManager::install("BayesSpace")'
+
+## Pagoda2 
+Rscript -e "install.packages('pagoda2')"
+
+## CellAnnotatoR 
+Rscript -e "devtools::install_github('hms-dbmi/conos')"
+Rscript -e "devtools::install_github('khodosevichlab/CellAnnotatoR')"
+
+## sctransform
+Rscript -e "install.packages('sctransform')"
+
+## slingshot
+Rscript -e 'BiocManager::install("slingshot")'
+
+## tensorflow
+Rscript -e "install.packages('tensorflow')"
+Rscript -e 'tensorflow::install_tensorflow(extra_packages="tensorflow-probability", version = "2.1.0")'
+
+## cellassign
+Rscript -e "devtools::install_github('Irrationone/cellassign')"
+
+## BioSingular
+Rript -e "BiocManager::install(c('BiocSingular'))"
+
+## SCHNAPPs
+
+Rscript -e "devtools::install_github('haowulab/Wind')"
+Rscript -e "devtools::install_github('C3BI-pasteur-fr/UTechSCB-SCHNAPPs',dependencies = TRUE)"
+
+## scProportionTest
+Rscript -e "devtools::install_github('rpolicastro/scProportionTest')"
+
+## glmGamPoi
+Rscript -e 'BiocManager::install("glmGamPoi")'
+
+
+## Others
+Rript -e "BiocManager::install(c('escape'))"
+Rript -e "BiocManager::install(c('org.Mm.eg.db'))"
+Rript -e "BiocManager::install(c('DelayedMatrixStats'))"
+Rript -e "BiocManager::install(c('org.Hs.eg.db'))"
+Rript -e "BiocManager::install(c('DelayedArray'))"
+Rript -e "BiocManager::install(c('escape'))"
+Rript -e "BiocManager::install(c('clusterProfiler'))"
+Rript -e "BiocManager::install(c('ReactomePA'))"
+Rript -e "BiocManager::install(c('DOSE'))"
